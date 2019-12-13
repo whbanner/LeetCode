@@ -34,6 +34,8 @@ public class TwoNumAdd {
         }
         return null;
     }
+
+    //利用map 先把数组放到map中  K为数 V为数的下标
     public static int[] twoSum2(int[] nums, int target) {
         int len = nums.length;
         int[] two = new int[2];
@@ -43,6 +45,7 @@ public class TwoNumAdd {
         }
         for (int j=0;j<len;j++){
             int res=target-nums[j];
+            //此api可以之久找到K有没有 想要的数, 后面是查询这个res是不是这个数本身
             if(map.containsKey(res)&&map.get(res)!=j){
                 two[0]=j;
                 two[1]=map.get(res);
