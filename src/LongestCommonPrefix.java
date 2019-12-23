@@ -27,25 +27,34 @@ public class LongestCommonPrefix {
         return "";
     }
 
+
+
     public String longestCommonPrefix2(String[] strs) {
-        if (strs.length == 0) return "";
-        String prefix = strs[0];
-        for (int i = 1; i < strs.length; i++){
-            while (strs[i].indexOf(prefix) != 0) {
-                prefix = prefix.substring(0, prefix.length() - 1);
-                if (prefix.isEmpty()) return "";
-            }
-        }
-        return prefix;
+       if(strs.length==0){
+           return "";
+       }
+        String pre = strs[0];
+       for(int i=1;i<strs.length;i++){
+           while (strs[i].indexOf(pre)!=0){
+               //将末尾每次减一
+               pre=pre.substring(0,pre.length()-1);
+               //判断前缀是否为有
+               if (pre.isEmpty()){
+                   return "";
+               }
+           }
+       }
+       return pre;
     }
 
 
 
     public static void main(String[] args) {
-//        String strs[]={"lower","flow","fliwht"};
-//        System.out.println(new LongestCommonPrefix().longestCommonPrefix(strs));
-        String st1="121";
-        String st2="124444";
-        System.out.println(st2.indexOf(st1));
-    }
+        String strs[]={"flower","flow","fliwht"};
+        System.out.println(new LongestCommonPrefix().longestCommonPrefix2(strs));
+//        String st1="121";
+//        String st2="121444";
+//        System.out.println(st1.substring(0,st1.length()-1));
+//        System.out.println(st2.indexOf(st1));
+     }
 }
