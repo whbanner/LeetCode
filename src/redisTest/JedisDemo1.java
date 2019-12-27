@@ -12,6 +12,7 @@ public class JedisDemo1 {
     /**
      * 单实例的测试
      */
+    //REDIS 不同于 map关机开机之后还有
     @Test
     public void demo1(){
         // 1.设置IP地址和端口
@@ -43,7 +44,7 @@ public class JedisDemo1 {
         // 通过连接池获得连接
         Jedis jedis = jedisPool.getResource();
         // 设置数据
-        jedis.set("name","张三");
+//        jedis.set("name","张三");
         // 获取数据
         String value = jedis.get("name");
         System.out.println(value);
