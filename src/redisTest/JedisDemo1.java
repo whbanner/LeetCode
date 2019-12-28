@@ -5,8 +5,16 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * https://blog.csdn.net/chai1230/article/details/79347154
+ * https://www.jianshu.com/p/0bff715fd4f9
+ * redis-server 显示already use
+ * 用此命令  /etc/init.d/redis-server stop
+ * 启动     /etc/init.d/redis-server start
  */
 public class JedisDemo1 {
     /**
@@ -18,11 +26,16 @@ public class JedisDemo1 {
         // 1.设置IP地址和端口
         Jedis jedis = new Jedis("localhost",6379);
         // 2.保存数据
-        jedis.set("name","wh");
+//        jedis.set("name","whhh");
+        Map<String,String> map=new HashMap<>();
+        map.put("username","wh");
+        map.put("password","123");
+        jedis.hmset("login",map);
         // 3.获取数据
-        String value = jedis.get("name");
+//        String value = jedis.get("name");
+        Map<String,String> map1=jedis.hgetAll("login");
 
-        System.out.println(value);
+        System.out.println(map1);
 
         // 4.释放资源
         jedis.close();
